@@ -597,6 +597,7 @@ class Query(ModelTimestampsMixin, BaseModel, BelongsToOrgMixin):
         db_table = 'queries'
 
     def to_dict(self, with_stats=False, with_visualizations=False, with_user=True, with_last_modified_by=True):
+        to_retrieve = (self.options['parameters']) and (self.latest_query_data)
         d = {
             'id': self.id,
             'latest_query_data_id': self._data.get('latest_query_data', None),
@@ -604,7 +605,7 @@ class Query(ModelTimestampsMixin, BaseModel, BelongsToOrgMixin):
             'description': self.description,
             'query': self.query,
             'query_hash': self.query_hash,
-            'query_hash_with_params': self.latest_query_data.query_hash if self.options['parameters'] else None,
+            'query_hash_with_params': self.latest_query_data.query_hash if to_retrieve else None,
             'schedule': self.schedule,
             'api_key': self.api_key,
             'is_archived': self.is_archived,
