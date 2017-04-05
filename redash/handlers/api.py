@@ -4,6 +4,7 @@ from flask import make_response
 
 from redash.utils import json_dumps
 from redash.handlers.base import org_scoped_rule
+from redash.handlers.utils import hashify_query
 from redash.handlers.alerts import AlertResource, AlertListResource, AlertSubscriptionListResource, AlertSubscriptionResource
 from redash.handlers.dashboards import DashboardListResource, RecentDashboardsResource, DashboardResource, DashboardShareResource
 from redash.handlers.data_sources import DataSourceTypeListResource, DataSourceListResource, DataSourceSchemaResource, DataSourceResource, DataSourcePauseResource

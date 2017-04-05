@@ -604,6 +604,7 @@ class Query(ModelTimestampsMixin, BaseModel, BelongsToOrgMixin):
             'description': self.description,
             'query': self.query,
             'query_hash': self.query_hash,
+            'query_hash_with_params': self.latest_query_data.query_hash if self.options['parameters'] else None,
             'schedule': self.schedule,
             'api_key': self.api_key,
             'is_archived': self.is_archived,
