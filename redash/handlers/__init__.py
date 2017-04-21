@@ -11,9 +11,9 @@ from redash.permissions import require_super_admin
 
 def base_href():
     if settings.MULTI_ORG:
-        base_href = url_for('redash.index', _external=True, org_slug=current_org.slug)
+        base_href = url_for('redash.ping', _external=True, org_slug=current_org.slug)
     else:
-        base_href = url_for('redash.index', _external=True)
+        base_href = url_for('redash.ping', _external=True)
 
     return base_href
 
